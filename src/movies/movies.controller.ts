@@ -11,7 +11,10 @@ import { MoviesService } from './movies.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 
-@Controller({ path: 'movies', host: 'localhost' })
+@Controller({
+  path: 'movies',
+  //  host: 'localhost'
+})
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
@@ -32,7 +35,6 @@ export class MoviesController {
 
   @Patch(':id')
   update(@Param('id') id: number, @Body() updateMovieDto: UpdateMovieDto) {
-    console.log(updateMovieDto);
     return this.moviesService.update(id, updateMovieDto);
   }
 
